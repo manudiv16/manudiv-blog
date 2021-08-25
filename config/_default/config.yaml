@@ -12,7 +12,7 @@ googleAnalytics:
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl
-DefaultContentLanguage: es
+DefaultContentLanguage: en
 
 permalinks:
     post: /p/:slug/
