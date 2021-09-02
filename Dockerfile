@@ -13,7 +13,7 @@ RUN wget --quiet "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VER
 
 COPY ./ /site
 WORKDIR /site
-RUN if [ "$ENVIRONMENT" = "dev" ] ; then hugo --environment dev ; else hugo ; fi
+RUN if [ "$ENVIRONMENT" = "development" ] ; then hugo --environment development ; else hugo ; fi
 
 #Copy static files to Nginx
 FROM nginx:alpine
