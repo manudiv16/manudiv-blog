@@ -13,7 +13,7 @@ tags:
   
 image: "pexels-davis-sanchez-1727004-min.jpg"
 ---
-Primeramente vamos a crear nuestro arbol de directorios con las carpetas y ficheros necesarios para correr nuestro balanceador de carga/proxy.
+Primeramente vamos a crear nuestro arbol de directorios con las carpetas y ficheros necesarios para correr nuestro balanceador de carga/proxy..
 ```bash
 mkdir -p traefik/data/configurations
 touch traefik/data/{acme.json,traefik.yml} \
