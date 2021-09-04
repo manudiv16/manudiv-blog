@@ -40,4 +40,4 @@ jobs:
         with:
           config: ${{ secrets.KUBE_CONFIG_DATA }}
           version: v1.21.0 # specify kubectl binary version explicitly
-          command: rollout status deployment/my-app
+          command: rollout status deployment/blog-manu
