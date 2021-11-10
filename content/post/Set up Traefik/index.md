@@ -30,7 +30,8 @@ traefik
 │   └── traefik.yml
 └── docker-compose.yml
 ```
-`docker-compose.yml`
+
+## docker-compose.yml
 ```yaml
 version: '3.7'
 
@@ -62,7 +63,7 @@ networks:
   proxy:
     external: true
 ```
-`traefik.yml`
+## traefik.yml
 ```yaml
 api:
   dashboard: true
@@ -103,7 +104,7 @@ pilot:
 
 ```
 
-`dynamic.yml`
+## dynamic.yml
 ```yaml
 # Dynamic configuration
 http:
