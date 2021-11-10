@@ -23,9 +23,7 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon:
-        local: true
-        src: img/favicon.png
+    favicon: /img/robot.png
 
     footer:
         since: 2020
