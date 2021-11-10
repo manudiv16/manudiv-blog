@@ -2,7 +2,7 @@ name: ci
 
 on:
   push:
-    branches: 
+    branches:
       - main
 
 jobs:
@@ -30,14 +30,14 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           push: true
           tags: manudiv1/manudiv-blog:alpine,manudiv1/manudiv-blog:latest,manudiv1/manudiv-blog:${{ github.sha }}
-      - name: deploy to cluster
-        uses: steebchen/kubectl@v2.0.0
-        with: # defaults to latest kubectl binary version
-          config: ${{ secrets.KUBE_CONFIG_DATA }}
-          command: set image --record deployment/blog-manu manudiv-blog=manudiv1/manudiv-blog:${{ github.sha }}
-      - name: verify deployment
-        uses: steebchen/kubectl@v2.0.0
-        with:
-          config: ${{ secrets.KUBE_CONFIG_DATA }}
-          version: v1.21.0 # specify kubectl binary version explicitly
-          command: rollout status deployment/blog-manu
+      # - name: deploy to cluster
+      #   uses: steebchen/kubectl@v2.0.0
+      #   with: # defaults to latest kubectl binary version
+      #     config: ${{ secrets.KUBE_CONFIG_DATA }}
+      #     command: set image --record deployment/blog-manu manudiv-blog=manudiv1/manudiv-blog:${{ github.sha }}
+      # - name: verify deployment
+      #   uses: steebchen/kubectl@v2.0.0
+      #   with:
+      #     config: ${{ secrets.KUBE_CONFIG_DATA }}
+      #     version: v1.21.0 # specify kubectl binary version explicitly
+      #     command: rollout status deployment/blog-manu
