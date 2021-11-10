@@ -1,4 +1,4 @@
-baseurl: https://blog.manudiv15.duckdns.org
+baseurl: https://manudiv.org
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
