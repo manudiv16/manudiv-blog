@@ -132,7 +132,8 @@ menu:
           name: Home
           url: /
           weight: -100
-          pre: home
+          params:
+              newTab: true
 
 related:
     includeNewer: true

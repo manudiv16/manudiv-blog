@@ -132,7 +132,9 @@ menu:
           name: Home
           url: /
           weight: -100
-          pre: home
+          params:
+              newTab: true
+              icon: home
     social:
         - identifier: github
           name: GitHub
