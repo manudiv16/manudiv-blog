@@ -9,9 +9,9 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.blog-manu.entrypoints=websecure"
-      - "traefik.http.routers.blog-manu.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.blog-manu.rule=Host(`manudiv.org`)"
       - "traefik.http.routers.blog-manu.service=blog-manu"
-      - "traefik.http.services.blog-manu.loadbalancer.server.port=${APP_PORT}"
+      - "traefik.http.services.blog-manu.loadbalancer.server.port=80"
 volumes:
   code:
     driver: local
