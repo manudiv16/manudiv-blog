@@ -12,6 +12,8 @@ jobs:
       DOCKER_IMAGE: ${{ secrets.DOCKER_USERNAME }}/manudiv-blog
 
     steps:
+      - uses: actions/checkout@v2
+      
       - name: Creating envs
         run: |
           echo "IMAGE_TAG=sha-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
