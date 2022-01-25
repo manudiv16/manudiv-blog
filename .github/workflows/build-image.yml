@@ -25,7 +25,7 @@ jobs:
       - name: Select Env
         shell: bash
         run: |
-          if [[${{ steps.extract_branch.outputs.branch }} = 'master']];
+          if [[${{ steps.extract_branch.outputs.branch }} = 'main']];
           then
             echo "##[set-output name=environment;]$(echo "production")"
             echo "##[set-output name=environment-folder;]$(echo "")"
