@@ -27,19 +27,19 @@ jobs:
         run: |
           if [[${{ steps.extract_branch.outputs.branch }} = 'main']];
           then
-            echo "##[set-output name=environment;]$(echo "production")"
-            echo "##[set-output name=environment-folder;]$(echo "")"
-            echo "##[set-output name=environment-url;]$(echo "${env.URL}")"
+            echo "environment=production" >> $GITHUB_ENV
+            echo "environment-folder=''" >> $GITHUB_ENV
+            echo "environment-url=${env.URL}" >> $GITHUB_ENV
           elseif [${steps.extract_branch.outputs.branch} = 'develop']
-            echo "##[set-output name=environment;]$(echo "staging")"
-            echo "##[set-output name=environment-folder;]$(echo "development")"
-            echo "##[set-output name=environment-url;]$(echo "dev.${env.URL}")"
+            echo "name=environment=staging")" >> $GITHUB_ENV
+            echo "environment-folder=development" >> $GITHUB_ENV
+            echo "environment-url=dev.${env.URL}" >> $GITHUB_ENV
           fi
         id: selection_environment
 
       - name: Creating envs
         run: |
-          echo "IMAGE_TAG=sha-$(git rev-parse --short HEAD)-${{ steps.selection_environment.outputs.environment }}" >> $GITHUB_ENV
+          echo "IMAGE_TAG=sha-$(git rev-parse --short HEAD)-${{ env.environment }}" >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -65,7 +65,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           push: true
-          build-args: ENVIRONMENT=${{ steps.selection_environment.outputs.environment-folder }}
+          build-args: ENVIRONMENT=${{ env.environment-folder }}
           tags: ${{ env.DOCKER_IMAGE }}:latest,${{ env.DOCKER_IMAGE }}:${{ env.IMAGE_TAG }}
 
       - name: deploy to portainer
@@ -74,7 +74,7 @@ jobs:
           serverurl: ${{ secrets.PORTAINER_HOST }}
           username: ${{ secrets.PORTAINER_USERNAME }}
           password: ${{ secrets.PORTAINER_PASSWORD }}
-          stackname: ${{ steps.selection_environment.outputs.environment }}-${{ env.STACK-NAME }}
+          stackname: ${{ env.environment }}-${{ env.STACK-NAME }}
           imagename: ${{ env.DOCKER_IMAGE}}:${{ env.IMAGE_TAG }}
           docker_compose: |
             version: "3.3"
@@ -87,10 +87,10 @@ jobs:
                 labels:
                   - "traefik.enable=true"
                   - "traefik.docker.network=proxy"
-                  - "traefik.http.routers.${{ steps.selection_environment.outputs.environment }}-blog-manu.entrypoints=websecure"
-                  - "traefik.http.routers.${{ steps.selection_environment.outputs.environment }}-blog-manu.rule=Host(`${{ steps.selection_environment.outputs.environment-url }}`)"
-                  - "traefik.http.routers.${{ steps.selection_environment.outputs.environment }}-blog-manu.service=blog-manu"
-                  - "traefik.http.services.${{ steps.selection_environment.outputs.environment }}-blog-manu.loadbalancer.server.port=80"
+                  - "traefik.http.routers.${{ env.environment }}-blog-manu.entrypoints=websecure"
+                  - "traefik.http.routers.${{ env.environment }}-blog-manu.rule=Host(`${{ env.environment-url }}`)"
+                  - "traefik.http.routers.${{ env.environment }}-blog-manu.service=blog-manu"
+                  - "traefik.http.services.${{ env.environment }}-blog-manu.loadbalancer.server.port=80"
             networks:
               proxy:
                 external: true
