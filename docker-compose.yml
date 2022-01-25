@@ -4,6 +4,6 @@ services:
     build:
       context: .
       args:
-        ENVIRONMENT: "development"
+        ENVIRONMENT: "local-development"
     ports:
       - 8080:80
