@@ -29,12 +29,12 @@ jobs:
             main)
               echo "environment=production" >> $GITHUB_ENV
               echo "environment-folder=''" >> $GITHUB_ENV
-              echo "environment-url=${env.URL}" >> $GITHUB_ENV
+              echo "environment-url=${{env.URL}}" >> $GITHUB_ENV
               ;;
             develop)
               echo "environment=staging" >> $GITHUB_ENV
               echo "environment-folder=development" >> $GITHUB_ENV
-              echo "environment-url=dev.${env.URL}" >> $GITHUB_ENV
+              echo "environment-url=dev.${{env.URL}}" >> $GITHUB_ENV
               ;;
             *)
               echo "nothing"
