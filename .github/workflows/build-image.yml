@@ -31,11 +31,10 @@ jobs:
             echo "environment-folder=''" >> $GITHUB_ENV
             echo "environment-url=${env.URL}" >> $GITHUB_ENV
           elseif [${steps.extract_branch.outputs.branch} = 'develop']
-            echo "name=environment=staging" >> $GITHUB_ENV
+            echo "environment=staging" >> $GITHUB_ENV
             echo "environment-folder=development" >> $GITHUB_ENV
             echo "environment-url=dev.${env.URL}" >> $GITHUB_ENV
           fi
-        id: selection_environment
 
       - name: Creating envs
         run: |
