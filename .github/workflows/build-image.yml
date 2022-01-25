@@ -71,13 +71,11 @@ jobs:
       - name: deploy to portainer
         uses: LGinC/portainer-stack-deploy@master
         with:
-          serverurl: http://xxx.com:9000
+          serverurl: ${{ secrets.PORTAINER_HOST }}
           username: ${{ secrets.PORTAINER_USERNAME }}
           password: ${{ secrets.PORTAINER_PASSWORD }}
-          endpointId: 1
-          stackname: dotnet_test
-          registry: mcr.microsoft.com
-          imagename: dotnet/core/aspnet:3.1-alpine
+          stackname: ${{ steps.selection_environment.outputs.environment }}-${{ env.STACK-NAME }}
+          imagename: ${{ env.DOCKER_IMAGE}}:${{ env.IMAGE_TAG }}
           docker_compose: |
             version: "3.3"
             services:
@@ -97,12 +95,12 @@ jobs:
               proxy:
                 external: true
 
-      - name: Deploy stack to Portainer
-        uses: carlrygart/portainer-stack-deploy@v1
-        with:
-          portainer-host: ${{ secrets.PORTAINER_HOST }}
-          username: ${{ secrets.PORTAINER_USERNAME }}
-          password: ${{ secrets.PORTAINER_PASSWORD }}
-          stack-name: ${{ steps.selection_environment.outputs.environment }}-${{ env.STACK-NAME }}
-          stack-definition: "infra.yml"
-          image: ${{ env.DOCKER_IMAGE}}:${{ env.IMAGE_TAG }}
+      # - name: Deploy stack to Portainer
+      #   uses: carlrygart/portainer-stack-deploy@v1
+      #   with:
+      #     portainer-host: ${{ secrets.PORTAINER_HOST }}
+      #     username: ${{ secrets.PORTAINER_USERNAME }}
+      #     password: ${{ secrets.PORTAINER_PASSWORD }}
+      #     stack-name: ${{ steps.selection_environment.outputs.environment }}-${{ env.STACK-NAME }}
+      #     stack-definition: "infra.yml"
+      #     image: ${{ env.DOCKER_IMAGE}}:${{ env.IMAGE_TAG }}
