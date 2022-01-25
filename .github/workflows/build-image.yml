@@ -25,7 +25,7 @@ jobs:
       - name: Select Env
         shell: bash
         run: |
-          if [[${{ steps.extract_branch.outputs.branch }} = 'main']];
+          if [[${{ steps.extract_branch.outputs.branch }} = main ]];
           then
             echo "environment=production" >> $GITHUB_ENV
             echo "environment-folder=''" >> $GITHUB_ENV
