@@ -28,7 +28,7 @@ jobs:
           case ${{ steps.extract_branch.outputs.branch }} in 
             main)
               echo "environment=production" >> $GITHUB_ENV
-              cho "environment-folder=''" >> $GITHUB_ENV
+              echo "environment-folder=''" >> $GITHUB_ENV
               echo "environment-url=${env.URL}" >> $GITHUB_ENV
               ;;
             develop)
