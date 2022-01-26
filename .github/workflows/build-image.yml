@@ -73,6 +73,7 @@ jobs:
           tags: ${{ env.DOCKER_IMAGE }}:latest,${{ env.DOCKER_IMAGE }}:${{ env.IMAGE_TAG }}
 
       - name: Deploy stack to Portainer
+        if: ${{ env.environment == 'production' }}
         uses: carlrygart/portainer-stack-deploy@v1
         with:
           portainer-host: ${{ secrets.PORTAINER_HOST }}
@@ -80,4 +81,15 @@ jobs:
           password: ${{ secrets.PORTAINER_PASSWORD }}
           stack-name: "blog-manu"
           stack-definition: "infra.yml"
+          image: ${{ env.DOCKER_IMAGE}}:${{ env.IMAGE_TAG }}
+
+      - name: Deploy stack to Portainer
+        if: ${{ env.environment == 'staging' }}
+        uses: carlrygart/portainer-stack-deploy@v1
+        with:
+          portainer-host: ${{ secrets.PORTAINER_HOST }}
+          username: ${{ secrets.PORTAINER_USERNAME }}
+          password: ${{ secrets.PORTAINER_PASSWORD }}
+          stack-name: "staging-blog-manu"
+          stack-definition: "dev-infra.yml"
           image: ${{ env.DOCKER_IMAGE}}:${{ env.IMAGE_TAG }}

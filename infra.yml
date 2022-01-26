@@ -8,10 +8,10 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
-      - "traefik.http.routers.${ENV}-blog-manu.entrypoints=websecure"
-      - "traefik.http.routers.${ENV}-blog-manu.rule=Host(`${URL}`)"
-      - "traefik.http.routers.${ENV}-blog-manu.service=${ENV}-blog-manu"
-      - "traefik.http.services.${ENV}-blog-manu.loadbalancer.server.port=80"
+      - "traefik.http.routers.blog-manu.entrypoints=websecure"
+      - "traefik.http.routers.blog-manu.rule=Host(`manudiv.org`)"
+      - "traefik.http.routers.blog-manu.service=blog-manu"
+      - "traefik.http.services.blog-manu.loadbalancer.server.port=80"
 networks:
   proxy:
     external: true
