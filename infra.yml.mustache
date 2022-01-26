@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+{{ env }}-blog-manu:
+    image: manudiv1/manudiv-blog:alpine
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.{{ env }}-blog-manu.entrypoints=websecure"
+      - "traefik.http.routers.{{ env }}-blog-manu.rule=Host(`{{ env-url }}`)"
+      - "traefik.http.routers.{{ env }}-blog-manu.service=blog-manu"
+      - "traefik.http.services.{{ env }}-blog-manu.loadbalancer.server.port=80"
+networks:
+  proxy:
+    external: true
