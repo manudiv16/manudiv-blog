@@ -78,6 +78,7 @@ jobs:
           portainer-url: ${{ secrets.PORTAINER_HOST }}
           portainer-username: ${{ secrets.PORTAINER_USERNAME }}
           portainer-password: ${{ secrets.PORTAINER_PASSWORD }}
+          portainer-endpoint: 1
           name: ${{ env.environment }}-${{ env.STACK-NAME }}
           file: infra.yml.mustache
           variables: '{"image": "${{ env.DOCKER_IMAGE}}:${{ env.IMAGE_TAG }}","env": ${{ env.environment }},"env-url": ${{ env.environment-url }} }'
