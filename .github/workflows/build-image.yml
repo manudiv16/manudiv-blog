@@ -78,6 +78,6 @@ jobs:
           portainer-host: ${{ secrets.PORTAINER_HOST }}
           username: ${{ secrets.PORTAINER_USERNAME }}
           password: ${{ secrets.PORTAINER_PASSWORD }}
-          stack-name: production-blog-manu
+          stack-name: "blog-manu"
           stack-definition: "infra.yml"
           image: ${{ env.DOCKER_IMAGE}}:${{ env.IMAGE_TAG }}
