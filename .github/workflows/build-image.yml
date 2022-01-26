@@ -71,33 +71,44 @@ jobs:
           push: true
           build-args: ENVIRONMENT=${{ env.environment-folder }}
           tags: ${{ env.DOCKER_IMAGE }}:latest,${{ env.DOCKER_IMAGE }}:${{ env.IMAGE_TAG }}
-
-      - name: deploy to portainer
-        uses: LGinC/portainer-stack-deploy@master
+      - name: Clone Repository
+      - uses: actions/checkout@v2
+      - name: Deploy Stack
+        uses: kgierke/portainer-stack-deployment@v1
         with:
-          serverurl: ${{ secrets.PORTAINER_HOST }}
-          username: ${{ secrets.PORTAINER_USERNAME }}
-          password: ${{ secrets.PORTAINER_PASSWORD }}
-          stackname: ${{ env.environment }}-${{ env.STACK-NAME }}
-          imagename: ${{ env.DOCKER_IMAGE}}:${{ env.IMAGE_TAG }}
-          docker_compose: |
-            version: "3.3"
-            services:
-              ${{ steps.selection_environment.outputs.environment }}-blog-manu:
-                image: manudiv1/manudiv-blog:alpine
-                restart: unless-stopped
-                networks:
-                  - proxy
-                labels:
-                  - "traefik.enable=true"
-                  - "traefik.docker.network=proxy"
-                  - "traefik.http.routers.${{ env.environment }}-blog-manu.entrypoints=websecure"
-                  - "traefik.http.routers.${{ env.environment }}-blog-manu.rule=Host(`${{ env.environment-url }}`)"
-                  - "traefik.http.routers.${{ env.environment }}-blog-manu.service=blog-manu"
-                  - "traefik.http.services.${{ env.environment }}-blog-manu.loadbalancer.server.port=80"
-            networks:
-              proxy:
-                external: true
+          portainer-url: ${{ secrets.PORTAINER_HOST }}
+          portainer-username: ${{ secrets.PORTAINER_USERNAME }}
+          portainer-password: ${{ secrets.PORTAINER_PASSWORD }}
+          name: ${{ env.environment }}-${{ env.STACK-NAME }}
+          file: infra.yml.mustache
+          variables: '{"image": "${{ env.DOCKER_IMAGE}}:${{ env.IMAGE_TAG }}","env": ${{ env.environment }},"env-url": ${{ env.environment-url }} }'
+
+      # - name: deploy to portainer
+      #   uses: LGinC/portainer-stack-deploy@master
+      #   with:
+      #     serverurl: ${{ secrets.PORTAINER_HOST }}
+      #     username: ${{ secrets.PORTAINER_USERNAME }}
+      #     password: ${{ secrets.PORTAINER_PASSWORD }}
+      #     stackname: ${{ env.environment }}-${{ env.STACK-NAME }}
+      #     imagename: ${{ env.DOCKER_IMAGE}}:${{ env.IMAGE_TAG }}
+      #     docker_compose: |
+      #       version: "3.3"
+      #       services:
+      #         ${{ steps.selection_environment.outputs.environment }}-blog-manu:
+      #           image: manudiv1/manudiv-blog:alpine
+      #           restart: unless-stopped
+      #           networks:
+      #             - proxy
+      #           labels:
+      #             - "traefik.enable=true"
+      #             - "traefik.docker.network=proxy"
+      #             - "traefik.http.routers.${{ env.environment }}-blog-manu.entrypoints=websecure"
+      #             - "traefik.http.routers.${{ env.environment }}-blog-manu.rule=Host(`${{ env.environment-url }}`)"
+      #             - "traefik.http.routers.${{ env.environment }}-blog-manu.service=blog-manu"
+      #             - "traefik.http.services.${{ env.environment }}-blog-manu.loadbalancer.server.port=80"
+      #       networks:
+      #         proxy:
+      #           external: true
 
       # - name: Deploy stack to Portainer
       #   uses: carlrygart/portainer-stack-deploy@v1
