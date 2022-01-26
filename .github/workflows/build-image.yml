@@ -71,8 +71,6 @@ jobs:
           push: true
           build-args: ENVIRONMENT=${{ env.environment-folder }}
           tags: ${{ env.DOCKER_IMAGE }}:latest,${{ env.DOCKER_IMAGE }}:${{ env.IMAGE_TAG }}
-      - name: Clone Repository
-      - uses: actions/checkout@v2
 
       - name: Deploy Stack
         uses: kgierke/portainer-stack-deployment@v1
