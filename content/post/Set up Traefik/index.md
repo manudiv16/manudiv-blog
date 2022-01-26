@@ -7,7 +7,7 @@ description: "Set up the loadbalancer traefik on docker-compose."
 categories:
     - Docker
 tags:
-    - "Traefik"
+    - Traefik
     - Docker
     - Docker Compose
   
