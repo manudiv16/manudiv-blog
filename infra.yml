@@ -9,7 +9,7 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.blog-manu.entrypoints=websecure"
-      - "traefik.http.routers.blog-manu.rule=Host(`manudiv.org`)"
+      - "traefik.http.routers.blog-manu.rule=Host(`manudev.dev`)"
       - "traefik.http.routers.blog-manu.service=blog-manu"
       - "traefik.http.services.blog-manu.loadbalancer.server.port=80"
 networks:
