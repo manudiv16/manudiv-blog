@@ -9,7 +9,7 @@ categories:
 tags:
     - Git
   
-image: "cherry-pick.jpg"
+image: "cherry-pick.png"
 ---
 
 
