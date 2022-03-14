@@ -1,4 +1,4 @@
-FROM klakegg/hugo:0.92.1-ext-ubuntu-onbuild as build
+FROM klakegg/hugo:0.93.3-ext-ubuntu-onbuild as build
 
 ARG ENVIRONMENT
 
