@@ -9,7 +9,7 @@ categories:
 tags:
     - Git
   
-image: "cherry-pick.jpg"
+image: "cherry-pick.png"
 ---
 Comencé a escribir este post, ya que me causo curiosidad el hecho que haya gente que use herramientas como gitmoji para darle más semántica a sus commits.
 
@@ -59,10 +59,10 @@ fix: syntax error, added semicolon
 - **Feat**: Este cambio añadiría cambios a nuestra base de código y dependerá de sí esta cambia el funcionamiento de la aplicación que la combinaremos con un 'BREAKING CHANGE' o una '!'.
 
 ```bash
-# 0.3.1 -> 0.4.0
+# 0.3.1 -> 0.4.0 Minor
 feat: added some logic to do something
 
-# 0.3.1 -> 1.0.0
+# 0.3.1 -> 1.0.0 Major
 feat!: added some logic removed support for ...
 ```
 ## El más caótico
