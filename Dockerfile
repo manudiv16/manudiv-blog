@@ -6,7 +6,7 @@ COPY ./ .
 RUN if [ "$ENVIRONMENT" = "development" ] ; then hugo --minify --environment development ; else hugo --minify; fi 
 
 #Copy static files to Nginx
-FROM nginx:alpine
+FROM nginx:1.22.0-alpine
 COPY --from=build /target /usr/share/nginx/html
 
 WORKDIR /usr/share/nginx/html
