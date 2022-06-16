@@ -32,6 +32,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: hello-v1-svc
+  namespace: blog
 spec:
   selector:
     app: hello-v1
