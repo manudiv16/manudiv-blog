@@ -4,7 +4,7 @@ metadata:
   name: hello-v1
   namespace: blog
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
       app: hello-v1
