@@ -6,15 +6,15 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    external-dns.alpha.kubernetes.io/hostname: k8s.manudev.dev
+    cert-manager.io/cluster-issuer: "test-selfsigned"
+    external-dns.alpha.kubernetes.io/hostname: blog.local
 spec:
   tls:
     - hosts:
-        - k8s.manudev.dev
+        - blog.local
       secretName: hello-tls
   rules:
-    - host: k8s.manudev.dev
+    - host: blog.local
       http:
         paths:
           - pathType: Prefix
