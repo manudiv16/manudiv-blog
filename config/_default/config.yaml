@@ -35,7 +35,7 @@ params:
 
     sidebar:
         emoji: 🤖
-        subtitle: Passionate about technology, open source and SRE
+        subtitle: Soy un apasionado por la tecnología, desarrollo, opensource y SRE
         avatar:
             local: false
             src: https://avatars.githubusercontent.com/u/38869988?v=4
