@@ -13,7 +13,7 @@ image: "cherry-pick.png"
 ---
 Comencé a escribir este post, ya que me causo curiosidad el hecho que haya gente que use herramientas como gitmoji para darle más semántica a sus commits.
 
-A partir de ahí vi que la gente ha sentado unas convenciones para escribir mejores commits y trabajar en equipo.Esto ayuda para la visibilidad de los equipos al leer los commits de otros compañeros que trabajan en la misma base de código. Por otra parte, estos estándares pueden ayudar en muchos más entornos, para crear changelogs de la aplicación automaticamente y en la parte de integración, ya que al estandarizar podemos automatizar recursos que se activen en un momento específico de del desarrollo, haré más incapie en este tema en las descripciones de cada convención.
+A partir de ahí vi que la gente ha sentado unas convenciones para escribir mejores commits.Esto ayuda para la visibilidad de los equipos al leer los commits de otros compañeros que trabajan en la misma base de código. Por otra parte, estos estándares pueden ayudar en muchos más entornos, para crear changelogs de la aplicación automaticamente y en la parte de integración, ya que al estandarizar podemos automatizar recursos que se activen en un momento específico de del desarrollo, haré más incapie en este tema en las descripciones de cada convención.
 
 
 ## Easy one
