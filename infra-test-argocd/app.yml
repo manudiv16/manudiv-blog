@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-v1
+  namespace: blog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-v1
+  template:
+    metadata:
+      labels:
+        app: hello-v1
+    spec:
+      containers:
+        - name: hello
+          image: manudiv1/manudev-blog:sha-c14bc0d-production
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-v1-svc
+  namespace: blog
+spec:
+  selector:
+    app: hello-v1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

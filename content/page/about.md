@@ -1,6 +1,6 @@
 ---
 title: About
-description: Hugo, the world's fastest framework for building websites
+description: 
 date: '2019-02-28'
 aliases:
   - about-us
@@ -14,7 +14,7 @@ menu:
         pre: user
 ---
 
+Me llamo Francisco Manuel, soy un apasionado por la tecnología, el desarrollo, iniciativas opensource y SRE. 
+Mis posts pueden ir relacionados con los diferentes paradigmas de programación, la industria del desarrollo y tutoriales que recojo de pruebas que yo mismo estoy probando.
 
-Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
-
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+Puedes encontrarme aquí [GitHub](https://github.com/manudiv16) y [LinkedIn](www.linkedin.com/in/francisco-manuel-rubio)
