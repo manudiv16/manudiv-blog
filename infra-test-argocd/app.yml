@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: hello
-          image: manudiv1/manudev-blog:sha-c14bc0d-production
+          image: manudiv1/manudev-blog:sha-9630373-production
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
