@@ -1,2 +1,78 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Manudev Blog</title><link>https://manudev.dev/tags/git/</link><description>Recent content in Git on Manudev Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 29 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://manudev.dev/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Crear mejores commits</title><link>https://manudev.dev/p/crear-mejores-commits/</link><pubDate>Sat, 29 Jan 2022 00:00:00 +0000</pubDate><guid>https://manudev.dev/p/crear-mejores-commits/</guid><description>Comencé a escribir este post, ya que me causo curiosidad el hecho que haya gente que use herramientas como gitmoji para darle más semántica a sus commits.
-A partir de ahí vi que la gente ha sentado unas convenciones para escribir mejores commits.Esto ayuda para la visibilidad de los equipos al leer los commits de otros compañeros que trabajan en la misma base de código. Por otra parte, estos estándares pueden ayudar en muchos más entornos, para crear changelogs de la aplicación automaticamente y en la parte de integración, ya que al estandarizar podemos automatizar recursos que se activen en un momento específico de del desarrollo, haré más incapie en este tema en las descripciones de cada convención.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Manudev Blog</title><link>https://manudev.dev/tags/git/</link><description>Recent content in Git on Manudev Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 29 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://manudev.dev/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Crear mejores commits</title><link>https://manudev.dev/p/crear-mejores-commits/</link><pubDate>Sat, 29 Jan 2022 00:00:00 +0000</pubDate><guid>https://manudev.dev/p/crear-mejores-commits/</guid><description>&lt;img src="https://manudev.dev/p/crear-mejores-commits/cherry-pick.png" alt="Featured image of post Crear mejores commits" />&lt;p>Comencé a escribir este post, ya que me causo curiosidad el hecho que haya gente que use herramientas como gitmoji para darle más semántica a sus commits.&lt;/p>
+&lt;p>A partir de ahí vi que la gente ha sentado unas convenciones para escribir mejores commits.Esto ayuda para la visibilidad de los equipos al leer los commits de otros compañeros que trabajan en la misma base de código. Por otra parte, estos estándares pueden ayudar en muchos más entornos, para crear changelogs de la aplicación automaticamente y en la parte de integración, ya que al estandarizar podemos automatizar recursos que se activen en un momento específico de del desarrollo, haré más incapie en este tema en las descripciones de cada convención.&lt;/p>
+&lt;h2 id="easy-one">Easy one&lt;/h2>
+&lt;pre tabindex="0">&lt;code>&amp;lt;type&amp;gt;(optional scope): &amp;lt;description&amp;gt;
+[optional body]
+[optional footer]
+&lt;/code>&lt;/pre>&lt;p>Las convenciones más sencillas de seguir y las que recomendaría para equipos pequeños o side-projects sería la de &lt;a class="link" href="https://www.conventionalcommits.org" target="_blank" rel="noopener"
+>conventional commits&lt;/a>.
+Se basa en el uso de &amp;lsquo;fix:&amp;rsquo;, &amp;lsquo;feat&amp;rsquo; y &amp;lsquo;BREAKING CHANGE&amp;rsquo; o &amp;lsquo;!&amp;rsquo;, para discernir entre los tipos de tu commit. Como describía antes al asentar un estándar podemos crear automatizaciones en nuestros flujos dependiendo del tipo de commit, en este caso podríamos hacer una integración en la cual se aumentara la versión de la release dependiendo del tipo.&lt;/p>
+&lt;p>Otros tipos son bienvenidos, pero para controlar que cada programador comience a usar su creatividad será mejor definirlos en el fichero de &amp;lsquo;CONTRIBUTING.md&amp;rsquo; o usar un lintr como &lt;a class="link" href="https://github.com/conventional-changelog/commitlint" target="_blank" rel="noopener"
+>commitlint&lt;/a>.&lt;/p>
+&lt;pre tabindex="0">&lt;code>build - Build related changes
+chore - Build process or auxiliary tool changes
+docs - Documentation only changes
+feat - A new feature
+fix - A bug fix
+perf - A code change that improves performance
+refactor - A code change that neither fixes a bug or adds a feature
+revert - Reverting things
+style - Markup, white-space, formatting, missing semi-colons...
+test - Adding missing tests
+&lt;/code>&lt;/pre>&lt;p>Otra cosa que nos puede ayudar cuando no está claro en el cuerpo del commit, en que parte del código estamos trabajando, es el empleo del ámbito(&lt;em>scope&lt;/em>).&lt;/p>
+&lt;pre tabindex="0">&lt;code>fix(clients): syntax error, added semicolon
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>&lt;strong>Fix&lt;/strong>: Se usaría para corregir un fallo en la base de código y esto comportaría en nuestra integración con el cambio de release &amp;lsquo;PATCH&amp;rsquo;.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 0.0.1 -&amp;gt; 0.0.2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">fix: syntax error, added semicolon
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;strong>Feat&lt;/strong>: Este cambio añadiría cambios a nuestra base de código y dependerá de sí esta cambia el funcionamiento de la aplicación que la combinaremos con un &amp;lsquo;BREAKING CHANGE&amp;rsquo; o una &amp;lsquo;!&amp;rsquo;.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 0.3.1 -&amp;gt; 0.4.0 Minor&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">feat: added some logic to &lt;span class="k">do&lt;/span> something
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 0.3.1 -&amp;gt; 1.0.0 Major&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">feat!: added some logic removed support &lt;span class="k">for&lt;/span> ...
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="el-más-caótico">El más caótico&lt;/h2>
+&lt;p>Este método para estandarizar tus commits es el culpable de que esté escribiendo esto, ya que llama mucho la atención. Comencé a ver algunos repositorios donde se añadían emojis seguidos de la descripción, al principio creí que solo era un método para hacer más fashion nuestros commits, pero tirado por la curiosidad fui a ver como añadir emojis y descubrí el porqué de todo esto.&lt;/p>
+&lt;p>Esta convención me parece tan válida como la otra e igual de adaptable a tus necesidades, aunque en algunos casos creo que el uso de emojis se pueda ver de forma clara el objetivo de cada uno como 🐛, 🚑 o ✨; en otros no está tan claro, no olvidemos que en la industria es común tener equipos muy plurales y en diferentes culturas el uso de algunos emojis es totalmente diferente.&lt;/p>
+&lt;h2 id="algunos-tips">Algunos Tips&lt;/h2>
+&lt;p>Voy a dar algunos de los tips que más he visto en los enlaces que dejo como referencias.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Usar el verbo imperativo, git usa como estándar el verbo imperativo para lanzar sus comandos y muchos siguen esto para la descripción, definiendo así el estado en el que queremos que este al realizar nuestros cambios.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Longitud de la descripción y del cuerpo. La longitud de la descripción no debería de pasar de los 50 caracteres y el cuerpo puede extenderse hasta los 72 caracteres.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Cuando se agregue una descripción es mucho más importante el porqué que el cómo, normalmente los cambios son suficientemente explicativo, pero la razón de porque se llegó hacer de esa forma no.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Uso de herramientas como &lt;a class="link" href="https://github.com/commitizen/cz-cli" target="_blank" rel="noopener"
+>Commitizen&lt;/a>, &lt;a class="link" href="https://github.com/conventional-changelog/commitlint" target="_blank" rel="noopener"
+>commitlint&lt;/a> y &amp;lsquo;git hooks&amp;rsquo; nos pueden venir bien a la hora de mejorar en la construcción de nuestros commits.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="referencias">Referencias&lt;/h4>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.conventionalcommits.org" target="_blank" rel="noopener"
+>https://www.conventionalcommits.org&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://gitmoji.dev/" target="_blank" rel="noopener"
+>https://gitmoji.dev/&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://cbea.ms/git-commit/" target="_blank" rel="noopener"
+>https://cbea.ms/git-commit/&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://midu.dev/buenas-practicas-escribir-commits-git" target="_blank" rel="noopener"
+>https://midu.dev/buenas-practicas-escribir-commits-git&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://dev.to/helderburato/patterns-for-writing-better-git-commit-messages-4ba0" target="_blank" rel="noopener"
+>https://dev.to/helderburato/patterns-for-writing-better-git-commit-messages-4ba0&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://dev.to/wordssaysalot/art-of-writing-a-good-commit-message-56o7" target="_blank" rel="noopener"
+>https://dev.to/wordssaysalot/art-of-writing-a-good-commit-message-56o7&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/RomuloOliveira/commit-messages-guide" target="_blank" rel="noopener"
+>https://github.com/RomuloOliveira/commit-messages-guide&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/helderburato/dotfiles/blob/main/git/.gittemplates/commit" target="_blank" rel="noopener"
+>https://github.com/helderburato/dotfiles/blob/main/git/.gittemplates/commit&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://hashnode.com/post/which-commit-message-convention-do-you-use-at-work-ck3e4jbdd00zyo4s1h7mc7e0g" target="_blank" rel="noopener"
+>https://hashnode.com/post/which-commit-message-convention-do-you-use-at-work-ck3e4jbdd00zyo4s1h7mc7e0g&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>
