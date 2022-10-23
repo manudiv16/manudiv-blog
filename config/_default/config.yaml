@@ -12,7 +12,7 @@ googleAnalytics:
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl
-DefaultContentLanguage: en
+DefaultContentLanguage: es
 
 permalinks:
     post: /p/:slug/
@@ -131,7 +131,7 @@ menu:
         - identifier: home
           name: Home
           url: /
-          weight: -100
+          weight: -90
           params:
               newTab: false
               icon: home
