@@ -1,4 +1,4 @@
-baseurl: https://manudiv16.github.io/manudiv-blog/
+baseurl: https://manudiv16.github.io/manudiv-blog
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
